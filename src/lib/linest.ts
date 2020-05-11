@@ -6,10 +6,7 @@ export const linest = (series:{x: number, y: number}[]):{a: number, b: number} =
   const n = series.length;
 
   if (n < 1) {
-    // should throw error here
-    const a = 0;
-    const b = 0;
-    return {a, b};
+   throw Error('series length must be greater than zero')
   }
 
   const sumY = series.map(_ => _.y).reduce((a, b) => a + b);

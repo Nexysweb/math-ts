@@ -29,6 +29,8 @@ export const covarianceMatrix = (x:T.Matrix):T.Matrix => {
   const t = M.transpose(x);
   const nCol = t.length;
 
+  // todo: take advantage that the matrix is symmetric and divide computation time by 2
+  // https://en.wikipedia.org/wiki/Symmetric_matrix
   return new Array(nCol).fill(null).map((_, i) => {
     return new Array(nCol).fill(null).map((_, j) => {
       return covariance(t[i], t[j])

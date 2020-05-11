@@ -72,6 +72,12 @@ export const shape = (v:T.Vector, n: number, m: number):T.Matrix => {
   });
 }
 
+/**
+ * multiplies matrix 1 with matrix 2
+ * @see https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm
+ * @param m1 : matrix 1 (left)
+ * @param m2 : matrix 2 (right)
+ */
 export const multiplication = (m1: T.Matrix, m2: T.Matrix) => {
   const [n, m, p] = errorsMultiplication(m1, m2);
 
@@ -94,6 +100,10 @@ export const multiplication = (m1: T.Matrix, m2: T.Matrix) => {
   return shape(v, n, p);
 }
 
+/**
+ * 
+ * @param m matrix to be transposed
+ */
 export const transpose = (m:T.Matrix):T.Matrix => {
   const nRows = m.length;
   const nCols = m[0].length;

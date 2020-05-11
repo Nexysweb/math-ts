@@ -2,7 +2,12 @@ import * as Index from './linest';
 
 test('linest 1', () => {
   const series:{x:number, y:number}[] = [];
-  expect(Index.linest(series)).toEqual({a: 0, b: 0});
+
+  try {
+    Index.linest(series)
+  } catch (err) {
+    expect(err.message).toEqual('series length must be greater than zero');
+  }
 });
 
 test('linest 2', () => {
