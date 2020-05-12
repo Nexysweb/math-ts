@@ -15,6 +15,7 @@ export class Complex {
     const x = Math.sin(phase)*mod;
     const y = Math.cos(phase)*mod;
 
+    // z = |z|exp(jarg(z))
     return new Complex(x, y);
   }
 
