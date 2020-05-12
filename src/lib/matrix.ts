@@ -114,3 +114,81 @@ export const transpose = (m:T.Matrix):T.Matrix => {
     })
   })
 }
+
+/**
+ * inversse
+ * @see http://web2.slc.qc.ca/pcamire/201-NYC-05/pdf%20of%20videos/6/matrix_inverse_algorithm.pdf
+ */
+
+ export const squareConditions = (t:T.Matrix):number => {
+  const n = t.length;
+  if (n === 0) {
+    throw Error('number of rows must be greatere than zero')
+  }
+  const m = t[0].length;
+
+  if (n !== m) {
+    throw Error('number of rows must equal number of columns')
+  }
+
+  return n
+}
+
+ /**
+  * deteminant
+  */
+export const determinant = (t:T.Matrix):number => {
+  const n = squareConditions(t);
+
+  if (n === 1) {
+    return t[0][0];
+  }
+
+  if (n === 2) {
+    return t[0][0]*t[1][1] - t[0][1]*t[1][0]
+  }
+
+  if (n===3) {
+    // 1
+    const m1 = [
+      [t[1][1], t[1][2]],
+      [t[2][1], t[2][2]],
+    ]
+
+    const d1 = determinant(m1);
+    
+
+    // 2
+    const m2 = [
+      [t[1][0], t[1][2]],
+      [t[2][0], t[2][2]],
+    ]
+
+    const d2 = determinant(m2)
+    
+    // 3
+    const m3 = [
+      [t[1][0], t[1][1]],
+      [t[2][0], t[2][1]],
+    ]
+
+    const d3 = determinant(m3);
+
+    return t[0][0]*d1 - t[0][1]*d2 + t[0][2]*d3;
+  }
+
+  return t[0].map((x, k) => {
+    const m:T.Matrix = new Array(n - 1).fill(null).map((row, i) => {
+      return new Array(n -1).fill(null).map((column, j) => {
+        const jk = j >= k ? j+1 : j;// (j + 1 + k)%(n);
+
+        return t[i+1][jk]
+      })
+    })
+
+    const d = determinant(m);
+
+    return d*t[0][k]*(-1)**(k)
+  })
+  .reduce((x,y) => x + y)
+}

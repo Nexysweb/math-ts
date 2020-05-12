@@ -59,3 +59,75 @@ test('multiplication 1x3 and 3 x 2', () => {
 test('transpose', () => {
   expect(M.transpose(m1)).toEqual(m9);
 })
+
+test('determinant 2x2', () => {
+  const m = [
+    [1, 2],
+    [3, 4]
+  ]
+  expect(M.determinant(m)).toEqual(-2)
+})
+
+test('determinant 3x3', () => {
+  // https://www.youtube.com/watch?v=V3e7m-qFDFU
+  const m = [
+    [4,  -3, 0],
+    [2, -1, 2],
+    [1,  5, 7]
+  ]
+  expect(M.determinant(m)).toEqual(-32)
+})
+
+test('determinant 3x3', () => {
+  // https://www.youtube.com/watch?v=pBZ98bm191o
+  const m = [
+    [-3,  1, 5],
+    [2, 4, 1],
+    [1,  3, 0]
+  ]
+  expect(M.determinant(m)).toEqual(20)
+})
+
+test('determinant 3x3', () => {
+  // https://www.youtube.com/watch?v=pBZ98bm191o 
+  const m = [
+    [4,  -3, 5],
+    [-6, 2, 1],
+    [0, 1, 0]
+  ]
+  expect(M.determinant(m)).toEqual(-34)
+})
+
+test('determinant 4x4', () => {
+  // https://www.youtube.com/watch?v=pBZ98bm191o
+  const m = [
+    [1, 0, 2, 0],
+    [-4, -3, 1, 5],
+    [-6, 2, 4, 1],
+    [0, 1, 3, 0]
+  ]
+  expect(M.determinant(m)).toEqual(-32) // wrong in the video (-4 => 4), see comments
+})
+
+test('determinant 4x4', () => {
+  // https://www.youtube.com/watch?v=vJLGWpob0T8
+  const m = [
+    [1, 2, 1, 0],
+    [2, 1, 1, 1],
+    [-1, 2, 1, -1],
+    [1, 1, 1, 2]
+  ]
+  expect(M.determinant(m)).toEqual(-3)
+})
+
+test('determinant 5x5', () => {
+  // expanded the above
+  const m = [
+    [1, 0, 0, 0, 0],
+    [0, 1, 2, 1, 0],
+    [0, 2, 1, 1, 1],
+    [0, -1, 2, 1, -1],
+    [0, 1, 1, 1, 2]
+  ]
+  expect(M.determinant(m)).toEqual(-3)
+})
