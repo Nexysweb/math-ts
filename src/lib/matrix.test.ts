@@ -131,3 +131,19 @@ test('determinant 5x5', () => {
   ]
   expect(M.determinant(m)).toEqual(-3)
 })
+
+test('gauss jordan', () => {
+  const m = [
+    [2, -1, 0],
+    [-1, 2, -1],
+    [0, -1, 2]
+  ]
+
+  const e = [
+    [3/4, 1/2, 1/4],
+    [1/2,   1, 1/2],
+    [1/4, 1/2, 3/4]
+  ]
+
+  expect(M.gaussJordan(m)).toEqual(e);
+})

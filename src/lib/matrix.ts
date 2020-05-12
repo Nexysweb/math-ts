@@ -153,16 +153,15 @@ export const determinant = (t:T.Matrix):number => {
     const m1 = [
       [t[1][1], t[1][2]],
       [t[2][1], t[2][2]],
-    ]
+    ];
 
     const d1 = determinant(m1);
-    
 
     // 2
     const m2 = [
       [t[1][0], t[1][2]],
       [t[2][0], t[2][2]],
-    ]
+    ];
 
     const d2 = determinant(m2)
     
@@ -170,7 +169,7 @@ export const determinant = (t:T.Matrix):number => {
     const m3 = [
       [t[1][0], t[1][1]],
       [t[2][0], t[2][1]],
-    ]
+    ];
 
     const d3 = determinant(m3);
 
@@ -191,4 +190,65 @@ export const determinant = (t:T.Matrix):number => {
     return d*t[0][k]*(-1)**(k)
   })
   .reduce((x,y) => x + y)
+}
+
+export const gaussJordan = (l:T.Matrix) => {
+  const n = squareConditions(l);
+
+  // add identity matrix
+  const m:T.Matrix = l.map((row, k) => {
+    const i = new Array(n).fill(0);
+    i[k] = 1;
+    return row.concat(i as T.Vector)
+  })
+
+  const k = 0;
+
+  for (let k = 0; k<n;k++) {
+    // normalize first row
+    m[k] = m[k].map(x => x/m[k][k])
+
+    // substract 1st row to all other rows
+    for (let i=0; i<n;i++) {
+      if(i !== k) {
+        m[i] = m[i].map((x, j) => x - m[i][k]*m[k][j])
+      }
+    }
+  }
+
+  /*
+  // normalize second row
+  m[1] = m[1].map(x => x/m[1][1])
+
+  // substract 2nd row to all other rows
+  for (let i=0; i<n;i++) {
+    if(i !== 1) {
+      m[i] = m[i].map((x, j) => x - m[i][1]*m[1][j])
+    }
+  }
+
+  // normalize second row
+  m[2] = m[2].map(x => x/m[2][2])
+
+  // substract 2nd row to all other rows
+  for (let i=0; i<n;i++) {
+    if(i !== 2) {
+      m[i] = m[i].map((x, j) => x - m[i][2]*m[2][j])
+    }
+  }*/
+
+  // prepare is identity array (it should be filled with ones, otherwise singular matrix)
+  const isIdentity = new Array(n);
+
+  // remove identity matrix (and make sure it is an identity matrix)
+  for(let i=0; i<n;i++) {
+    isIdentity[i] = m[i][i];
+    m[i] = m[i].filter((_, i) => i >= n)
+  }
+
+  if (isIdentity.reduce((a, b) => a + b) !== n) {
+    throw Error('singularity')
+  }
+
+  return m;
 }
