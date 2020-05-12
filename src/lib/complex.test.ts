@@ -1,4 +1,5 @@
 import * as C from './complex';
+import { toRad } from './degree';
 
 describe('complex exponential', () => {
   test('0', () => {
@@ -74,4 +75,18 @@ test('multiple', () => {
   const c3 = new C.Complex(1, 21)
 
   expect(c1.multiply(c2)).toEqual(c3)
+});
+
+// http://www.mathcentre.ac.uk/resources/sigma%20complex%20number%20leaflets/sigma-complex9-2009-1.pdf
+test('modulus and argument', () => {
+  const c1 = new C.Complex(4, 3);
+  // note that in the example there seems to be a mistake
+  const phase = toRad(36.86989);
+  const mod = 5;
+
+  expect(c1.modulus()).toEqual(mod);
+  expect(c1.argument()).toBeCloseTo(phase);
+  const c2 = C.Complex.fromModAndPhase(mod, phase);
+  expect(c2.x).toBeCloseTo(3)
+  expect(c2.y).toBeCloseTo(4)
 });

@@ -6,6 +6,18 @@ export class Complex {
     this.y = y;
   }
 
+  /**
+   * @see constructor overload: https://stackoverflow.com/questions/12702548/constructor-overload-in-typescript
+   * @param mod 
+   * @param phase 
+   */
+  static fromModAndPhase(mod: number, phase: number):Complex {
+    const x = Math.sin(phase)*mod;
+    const y = Math.cos(phase)*mod;
+
+    return new Complex(x, y);
+  }
+
   multiply(c:Complex):Complex {
     const x1 = c.x * this.x;
     const y1 = c.x * this.y;
@@ -17,6 +29,14 @@ export class Complex {
 
   sum(c:Complex):Complex {
     return new Complex(c.x + this.x, c.y + this.y)
+  }
+
+  modulus():number {
+    return Math.sqrt(this.x**2 + this.y**2);
+  }
+
+  argument():number {
+    return Math.atan2(this.y,this.x);//Math.atan(this.y/this.x); //
   }
 }
 
