@@ -132,7 +132,30 @@ test('determinant 5x5', () => {
   expect(M.determinant(m)).toEqual(-3)
 })
 
-test('gauss jordan', () => {
+test('gauss jordan 2x2', () => {
+  // https://www.mathsisfun.com/algebra/matrix-inverse.html
+  const m = [
+    [4, 7],
+    [2, 6]
+  ]
+
+  const e = [
+    [.6, -.7],
+    [-.2, .4]
+  ]
+
+  const g = M.gaussJordan(m)
+
+  // go through the matrix: rows and columns and check the values
+  m.map((row, i) => {
+    row.map((_, j) => {
+      expect(g[i][j]).toBeCloseTo(e[i][j])
+    })
+  })
+})
+
+test('gauss jordan 3x3', () => {
+  // ref: https://en.wikipedia.org/wiki/Gaussian_elimination#Finding_the_inverse_of_a_matrix
   const m = [
     [2, -1, 0],
     [-1, 2, -1],
@@ -145,5 +168,12 @@ test('gauss jordan', () => {
     [1/4, 1/2, 3/4]
   ]
 
-  expect(M.gaussJordan(m)).toEqual(e);
+  const g = M.gaussJordan(m)
+
+  // go through the matrix: rows and columns and check the values
+  m.map((row, i) => {
+    row.map((_, j) => {
+      expect(g[i][j]).toBeCloseTo(e[i][j])
+    })
+  })
 })

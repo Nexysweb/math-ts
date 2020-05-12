@@ -202,8 +202,6 @@ export const gaussJordan = (l:T.Matrix) => {
     return row.concat(i as T.Vector)
   })
 
-  const k = 0;
-
   for (let k = 0; k<n;k++) {
     // normalize first row
     m[k] = m[k].map(x => x/m[k][k])
@@ -216,27 +214,6 @@ export const gaussJordan = (l:T.Matrix) => {
     }
   }
 
-  /*
-  // normalize second row
-  m[1] = m[1].map(x => x/m[1][1])
-
-  // substract 2nd row to all other rows
-  for (let i=0; i<n;i++) {
-    if(i !== 1) {
-      m[i] = m[i].map((x, j) => x - m[i][1]*m[1][j])
-    }
-  }
-
-  // normalize second row
-  m[2] = m[2].map(x => x/m[2][2])
-
-  // substract 2nd row to all other rows
-  for (let i=0; i<n;i++) {
-    if(i !== 2) {
-      m[i] = m[i].map((x, j) => x - m[i][2]*m[2][j])
-    }
-  }*/
-
   // prepare is identity array (it should be filled with ones, otherwise singular matrix)
   const isIdentity = new Array(n);
 
@@ -247,7 +224,7 @@ export const gaussJordan = (l:T.Matrix) => {
   }
 
   if (isIdentity.reduce((a, b) => a + b) !== n) {
-    throw Error('singularity')
+    throw Error('singular matrix - cannot be inverted')
   }
 
   return m;
