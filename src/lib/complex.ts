@@ -1,7 +1,7 @@
 export class Complex {
   x:number;
   y:number;
-  constructor(x: number, y: number) {
+  constructor(x: number, y: number = 0) {
     this.x = x;
     this.y = y;
   }
@@ -18,7 +18,11 @@ export class Complex {
     return new Complex(x, y);
   }
 
-  multiply(c:Complex):Complex {
+  multiply(c:Complex | number):Complex {
+    if (typeof c === 'number') {
+      return this.multiply(new Complex(c));
+    }
+
     const x1 = c.x * this.x;
     const y1 = c.x * this.y;
     const y2 = c.y * this.x;

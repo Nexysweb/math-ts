@@ -15,7 +15,10 @@ export const fft = (v:Complex[]):Complex[] => {
 
   return v.map((_, k) => {
     return v.map((x, i) => {
-      return x.multiply(exp(2*Math.PI*k*i/N));
+      return x
+        .multiply(exp(2*Math.PI*k*i/N)
+        // this is not the definition of wikipedia
+        .multiply(1/Math.sqrt(N)));
     }).reduce((c1, c2) => c1.sum(c2))
   });
 }
