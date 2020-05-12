@@ -16,7 +16,4 @@ test('fft', () => {
     expect(c.x).toBeCloseTo(expectedX[i])
     expect(c.y).toBeCloseTo(expectedY[i])
   })
-
-  console.log(out.map(_ => _.x))
-  console.log(out.map(_ => _.y))
 })
