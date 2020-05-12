@@ -1,0 +1,21 @@
+import * as I from './index';
+
+test('imports', () => {
+  expect(typeof I.Binomial).toEqual('object')
+  expect(typeof I.Complex).toEqual('object')
+  expect(typeof I.Coordinate).toEqual('object')
+  expect(typeof I.Degree).toEqual('object')
+  expect(typeof I.Derivative).toEqual('object')
+  expect(typeof I.Fft).toEqual('object')
+  expect(typeof I.Function).toEqual('object')
+  expect(typeof I.Integral).toEqual('object')
+  expect(typeof I.Linest).toEqual('object')
+  expect(typeof I.Matrix).toEqual('object')
+  expect(typeof I.Polynom).toEqual('object')
+  expect(typeof I.Prime).toEqual('object')
+  expect(typeof I.Series).toEqual('object')
+  expect(typeof I.Type).toEqual('object')
+  expect(typeof I.Utils).toEqual('object')
+  expect(typeof I.Vector).toEqual('object')
+  expect(typeof I.Zeros).toEqual('object')
+})
