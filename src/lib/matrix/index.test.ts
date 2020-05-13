@@ -1,5 +1,5 @@
-import * as M from './matrix';
-import * as T from './type';
+import * as M from './index';
+import * as T from '../type';
 
 const m1:T.Matrix = [
   [1, 2, 3],
@@ -54,6 +54,18 @@ test('multiplication', () => {
 test('multiplication 1x3 and 3 x 2', () => {
   const m = M.multiplication(m7, m5);
   expect(m).toEqual(m8)
+});
+
+test('multiplication 2x2 and 2 x 1', () => {
+  const m1 = [
+    [1, 2],
+    [3, 4]
+  ]
+
+  const m2 = [[5], [6]]
+  const m3 = [[17], [39]]
+  const m = M.multiplication(m1, m2);
+  expect(m).toEqual(m3)
 });
 
 test('transpose', () => {

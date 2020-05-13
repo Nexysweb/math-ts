@@ -1,4 +1,31 @@
-import * as T from './type';
+import * as T from '../type';
+
+export default class Matrix {
+  m:T.Matrix;
+  constructor(m:T.Matrix) {
+    this.m = m;
+  }
+
+  sum(m2: T.Matrix) {
+    sum(this.m, m2);
+  }
+
+  multiply (m2: T.Matrix) {
+    return multiplication(this.m, m2);
+  }
+
+  transpose() {
+    return transpose(this.m);
+  }
+
+  determinant() {
+    return determinant(this.m);
+  }
+
+  inverse () {
+    return gaussJordan(this.m);
+  }
+}
 
 /**
  * 
@@ -81,23 +108,20 @@ export const shape = (v:T.Vector, n: number, m: number):T.Matrix => {
 export const multiplication = (m1: T.Matrix, m2: T.Matrix) => {
   const [n, m, p] = errorsMultiplication(m1, m2);
 
-  const v:T.Vector = new Array(n*p).fill(0);
-  //console.log(v)
-  //console.log([n, m, p])
+  const r:T.Matrix = new Array(n).fill(null).map(x => new Array(p).fill(0))
 
   for(let i = 0; i < n; i++) {
-    //console.log('' + i)
     for(let j = 0; j < p; j++) {
       let w = 0;
       for (let k = 0; k < m; k++) {
-        w +=m1[i][k] * m2[k][j];
+        w += m1[i][k] * m2[k][j];
       }
 
-      v[j+n*i] = w;
+      r[i][j] = w
     }    
   }
 
-  return shape(v, n, p);
+  return r;
 }
 
 /**
@@ -229,3 +253,5 @@ export const gaussJordan = (l:T.Matrix) => {
 
   return m;
 }
+
+export const inverse = gaussJordan
