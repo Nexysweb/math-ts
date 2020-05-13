@@ -23,5 +23,8 @@
   },
   "include": [
     "src/lib/**/*"
+  ],
+  "exclude": [
+    "src/**/*.test.ts"
   ]
 }
