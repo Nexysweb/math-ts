@@ -15,5 +15,6 @@ import * as Type from './type';
 import * as Utils from './utils';
 import * as Vector from './vector';
 import * as Zeros from './zeros';
+import * as Stats from './stat';
 
-export { Binomial, Complex, Coordinate, Degree, Derivative, Fft, Function, Integral, Linest, Matrix, Polynom, Prime, Series, Type, Utils, Vector, Zeros };
+export { Binomial, Complex, Coordinate, Degree, Derivative, Fft, Function, Integral, Linest, Matrix, Polynom, Prime, Series, Stats, Type, Utils, Vector, Zeros };

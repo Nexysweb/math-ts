@@ -14,6 +14,7 @@ test('imports', () => {
   expect(typeof I.Polynom).toEqual('object')
   expect(typeof I.Prime).toEqual('object')
   expect(typeof I.Series).toEqual('object')
+  expect(typeof I.Stats).toEqual('object')
   expect(typeof I.Type).toEqual('object')
   expect(typeof I.Utils).toEqual('object')
   expect(typeof I.Vector).toEqual('object')

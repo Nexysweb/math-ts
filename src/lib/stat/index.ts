@@ -3,6 +3,10 @@ import * as E from './estimate';
 import * as T from '../type';
 import * as M from '../matrix';
 
+import * as Regresion from './regression';
+
+export { Regresion};
+
 /**
  * computes covariance
  * @param  x: input vector 1

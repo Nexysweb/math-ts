@@ -2,6 +2,10 @@ import * as I from './index';
 import * as T from '../type';
 import * as M from '../matrix';
 
+test('import regression', () => {
+  expect(typeof I.Regresion).toEqual('object')
+})
+
 test('covariance" should "return covariance matrix"', () => {
   const x0:T.Vector = [4.0, 4.2, 3.9, 4.3, 4.1];
   const x1: T.Vector = [2.0, 2.1, 2.0, 2.1, 2.2];
