@@ -8,7 +8,20 @@ export const s = (v: T.Vector) => {
   return v.reduce((x, y) => x + y);
 }
 
-export const sum = (v1: T.Vector, v2: T.Vector):T.Vector => {
+/**
+ * @return sums vector with a scalar
+ * @param v : vector
+ * @param s : scalar
+ */
+export const sumScalar = (v: T.Vector, s: number):T.Vector => {
+  return v.map(x => x + s);
+}
+
+export const sum = (v1: T.Vector, v2: T.Vector | number):T.Vector => {
+  if (typeof v2 === 'number') {
+    return sumScalar(v1, v2);
+  }
+
   const v1l = v1.length;
 
   if (v1l === 0) {

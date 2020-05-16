@@ -11,6 +11,10 @@ test('sum', () => {
   expect(O.sum(v1, v2)).toEqual(v3);
 })
 
+test('sum scalar', () => {
+  expect(O.sumScalar(v1, 2)).toEqual([3, 4, 5]);
+})
+
 test('dot product', () => {
   expect(O.dotProduct(v1, v2)).toEqual(21);
 })
