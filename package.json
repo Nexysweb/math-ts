@@ -28,7 +28,7 @@
     "typescript": "~3.7.2"
   },
   "dependencies": {
-    "distributions": "^2.1.0"
+    "probability-distributions": "^0.9.1"
   },
   "scripts": {
     "buildpackage": "tsc -p tsconfig.build.json",
