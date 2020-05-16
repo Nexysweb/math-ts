@@ -16,7 +16,7 @@ export { Regresion};
  * @param  n: size of vector
  * @return sample covariane
  */
-export const covarianceWMeans = (x: number[], y: number[], mux: number, muy: number, n:number):number => {
+export const covarianceWMeans = (x: T.Vector, y: T.Vector, mux: number, muy: number, n:number):number => {
   const r = x.map((xi, i) => {
     const yi = y[i];
     return (xi - mux)*(yi- muy)
@@ -26,7 +26,7 @@ export const covarianceWMeans = (x: number[], y: number[], mux: number, muy: num
   return r/(n-1);
 }
 
-export const covariance = (x: number[], y: number[]):number => covarianceWMeans(x,y, V.mean(x), V.mean(y), x.length)
+export const covariance = (x: T.Vector, y: T.Vector):number => covarianceWMeans(x, y, V.mean(x), V.mean(y), x.length)
  
 
 export const covarianceMatrix = (x:T.Matrix):T.Matrix => {
@@ -45,7 +45,7 @@ export const covarianceMatrix = (x:T.Matrix):T.Matrix => {
 /**
  * computes correlation
  */
-export const correlation = (x: number[], y: number[]):number => covarianceWMeans(x,y, V.mean(x), V.mean(y), x.length)/(E.stddev(x)*E.stddev(y))
+export const correlation = (x: T.Vector, y: T.Vector):number => covarianceWMeans(x,y, V.mean(x), V.mean(y), x.length)/(E.stddev(x)*E.stddev(y))
 
   /**
    * computes sample autocovariance  
@@ -53,9 +53,11 @@ export const correlation = (x: number[], y: number[]):number => covarianceWMeans
    * @param k: lag
    * @patam n size of vector
    */
-export const autocovarianceWithN = (x: number[], k: number, n: number):number => covariance(x.slice(2), x.slice(0,-k)) // ((n.toDouble-1)/n.toDouble)*
+export const autocovarianceWithN = (x: T.Vector, k: number, n: number):number => {
+  return covariance(x.slice(k), x.slice(0,n-k)) // ((n.toDouble-1)/n.toDouble)*
+}
 
-export const autocovariance = (x: number[], k: number):number => autocovarianceWithN(x, k, x.length)
+export const autocovariance = (x: T.Vector, k: number):number => autocovarianceWithN(x, k, x.length)
 
   
 /**
@@ -64,9 +66,9 @@ export const autocovariance = (x: number[], k: number):number => autocovarianceW
  * @param c0: autocorrelation at time 0
  * @return autoroccelationfor chosen lag
  */
-const autocorrelationWithC0 = (x: number[], k: number, c0: number):number => autocovariance(x, k)/c0;
+const autocorrelationWithC0 = (x: T.Vector, k: number, c0: number):number => autocovariance(x, k)/c0;
 
-export const autocorrelation = (x: number[], k: number):number => autocorrelationWithC0(x, k, autocovariance(x, 0));
+export const autocorrelation = (x: T.Vector, k: number):number => autocorrelationWithC0(x, k, autocovariance(x, 0));
 
 /**
  * comutes transition matrix
