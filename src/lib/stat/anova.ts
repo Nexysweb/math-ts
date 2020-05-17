@@ -2,9 +2,6 @@ import * as T from '../type';
 import * as Vector from '../vector';
 import * as I from './index';
 
-import PD from 'probability-distributions';
-import Dis from 'distributions';
-
 const sumSq = (x: T.Vector, d: number = 0):number => {
   return x.map((fx) => {
     return (fx - d)**2
@@ -101,10 +98,15 @@ export default class Anova {
     return I.correlation(this.y, this.f);
   }
 
+  
   fTest() {
     const stat = this.rms/this.ems;
-    const n = 100
+    return stat;
+   
     // generate sample from dist
+    /*
+     const n = 100
+  todo
     const f:number[] = PD.rf(n, this.p, this.n-this.p-1)
     // count the number that are larger
     const m = f
@@ -114,6 +116,7 @@ export default class Anova {
     const pValue = m/n;
 
     return { stat, pValue }
+  }*/
   }
 
   sigma(m: T.Matrix) {
@@ -124,66 +127,11 @@ export default class Anova {
     })
   }
 
+  /*
+  todo
   student(studentConfidence = .95) {
     const v = this.n - this.p - 1
     return Dis.Studentt(v).inv(studentConfidence)
 
-  }
+  }*/
 }
-
-export const studentT = (n:number, x:number, v:number) => {
-  //return 1/(Math.sqrt(v)*PD.rbeta(n, 1/2, v/2))*(1+(x**2)/v)**(-(v+1)/2)
-  const s = Dis.Studentt(v).inv;
-  return s(x)
-}
-
-/*
-  ANOVA: Analysis of variance
-  x has two timeseries stored in a matrix [2, n]: predicted `y` (as `f`) nand input `y`
-  http://en.wikipedia.org/w/index.php?title=Coefficient_of_determination&redirect=no
-*/
-/*class Anova(y: DenseVector[Double], f: DenseVector[Double], p: Int = 1){
-  if(y.size != f.size){
-    println("vectors are not of the same size, object cannot be used")
-  }
-
-  lazy val n      = y.size
-
-  lazy val dfr    = p
-  lazy val dfe    = dft - dfr
-  lazy val dft    = n -1
-
-  lazy val y_avg  = mean(y.toDenseVector)
-  lazy val f_avg  = mean(f.toDenseVector)
-  lazy val y_ctr  = y - y_avg
-  lazy val f_ctr  = f - f_avg
-
-  lazy val rss    = sum(pow(f - y_avg, 2))
-  lazy val ess    = sum(pow(y - f, 2)) // error/residual sum square, // estimated sigma is equal to sum square of errors
-  lazy val tss    = sum(pow(y - y_avg, 2))
-
-  lazy val rsq    = 1-ess/tss // r-squared
-  lazy val r      = pow(rsq,.5) // r
-  lazy val correlation = sum(f_ctr:*y_ctr)/(LinAlg.norm(f_ctr)*LinAlg.norm(y_ctr)) // direct computation of correclation -  exact same thing as `r`
-
-  lazy val rms    = rss/dfr
-  lazy val ems    = ess/dfe
-  lazy val tms    = tss/dft
-
-  lazy val se     = sqrt(ems)
-
-  lazy val radj   = 1.0 - ems/tms // or 1.0-(1.0-rsq)*(n.toDouble-1.0)/(n.toDouble-p.toDouble-1.0)
-
-  // F-statistic
-  lazy val fstat  = rms/ems 
-  lazy val dis    = new org.apache.commons.math3.distribution.FDistribution(p, n-p-1)
-  lazy val pval   = 1d-dis.cumulativeProbability(fstat) // if `p-val` is bigger than 5% (confidence level alpha), hypothesis is rejected and a new model with less paramteres should be considered
-
-  def sigma(m: DenseMatrix[Double]) = sqrt(m:*ems)
-
-  val studentConfidence = .95
-  lazy val disStudent   = new org.apache.commons.math3.distribution.TDistribution(n-p-1)
-  lazy val qtStudent    = disStudent.inverseCumulativeProbability(studentConfidence)
-
-  def interval(sigma: Double) = sigma*qtStudent
-}*/
