@@ -3,6 +3,7 @@ import * as Vector from '../vector';
 import * as I from './index';
 
 import PD from 'probability-distributions';
+import Dis from 'distributions';
 
 const sumSq = (x: T.Vector, d: number = 0):number => {
   return x.map((fx) => {
@@ -54,8 +55,6 @@ export default class Anova {
 
   radj:number;
 
-  fStat:number;
-
   constructor (y: T.Vector, f: T.Vector, p: number = 1) {
     // vector length
     this.n = y.length;
@@ -96,25 +95,46 @@ export default class Anova {
     this.se = Math.sqrt(this.ems);
 
     this.radj   = 1.0 - this.ems/this.tms // or 1.0-(1.0-rsq)*(n.toDouble-1.0)/(n.toDouble-p.toDouble-1.0)
-
-    this.fStat = this.rms/this.ems;
   }
 
   correlation():number {
     return I.correlation(this.y, this.f);
   }
 
-  fTestPVal() {
+  fTest() {
+    const stat = this.rms/this.ems;
     const n = 100
     // generate sample from dist
     const f:number[] = PD.rf(n, this.p, this.n-this.p-1)
     // count the number that are larger
     const m = f
-      .map(x =>  (Math.sign(x - this.fStat) + 1)/2)
+      .map(x =>  (Math.sign(x - stat) + 1)/2)
       .reduce((a, b) => a + b)
     
-    return m/n;
+    const pValue = m/n;
+
+    return { stat, pValue }
   }
+
+  sigma(m: T.Matrix) {
+    return m.map(row => {
+      return row.map(cell => {
+        return Math.sqrt(cell*this.ems)
+      })
+    })
+  }
+
+  student(studentConfidence = .95) {
+    const v = this.n - this.p - 1
+    return Dis.Studentt(v).inv(studentConfidence)
+
+  }
+}
+
+export const studentT = (n:number, x:number, v:number) => {
+  //return 1/(Math.sqrt(v)*PD.rbeta(n, 1/2, v/2))*(1+(x**2)/v)**(-(v+1)/2)
+  const s = Dis.Studentt(v).inv;
+  return s(x)
 }
 
 /*

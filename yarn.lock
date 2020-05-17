@@ -1429,6 +1429,11 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
+"@types/distributions@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/distributions/-/distributions-2.0.0.tgz#0b0a81eeb579ff964b26d743342b49da7042d1a3"
+  integrity sha512-zReXUKU7xax3C22un+5NCNA73LcNQ/SjEYHfqCPTeWv7l7PaoJApkcoz8RQeQgpLlTJB3NA4DESek74t2nSOlw==
+
 "@types/eslint-visitor-keys@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
@@ -2709,6 +2714,11 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
+cephes@^1.1.2:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/cephes/-/cephes-1.2.0.tgz#4d246b622bc488ab8c982a1f702f0c9f49705d96"
+  integrity sha512-twuUuJRrIrsELHz6foJtZlqrz6FC36zoHZJvvThsrM1UWPKxyoilw1Rka6Hk0AmPFKHKUoGwGfAtvNZNtNZu0g==
+
 chalk@2.4.2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
@@ -3624,6 +3634,13 @@ dir-glob@2.0.0:
   dependencies:
     arrify "^1.0.1"
     path-type "^3.0.0"
+
+distributions@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/distributions/-/distributions-2.1.0.tgz#7005f01898937fbe6404abda20fa7f4aaaa058e0"
+  integrity sha512-4eov7WXRip5Tu0K7Y51W1oVt+DcvkoE0EzsvbLzgedC/n4PUpYXHqk6vo/OH1HteBHp5Vm6cmfnInf9NAXM4qQ==
+  dependencies:
+    cephes "^1.1.2"
 
 dns-equal@^1.0.0:
   version "1.0.0"

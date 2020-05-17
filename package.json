@@ -28,6 +28,8 @@
     "typescript": "~3.7.2"
   },
   "dependencies": {
+    "@types/distributions": "^2.0.0",
+    "distributions": "^2.1.0",
     "probability-distributions": "^0.9.1"
   },
   "scripts": {

@@ -4,11 +4,19 @@ import  Anova from './anova';
 import Linear from './regression'
 import * as M from '../matrix';
 
+import * as A from './anova';
+
 
 const x:T.Vector = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 const y:T.Vector = [44.66, 47.28, 48.4, 49.48, 49.39, 49.5, 49.76, 51.6, 52.73, 51.5];
 const n = x.length
 const L = new Linear(M.transpose([new Array(n).fill(1), x]), y);
+
+/*test('studentt', () => {
+  const t = A.studentT(1, .896, 2)
+  console.log(t)
+  expect(true).toEqual(true)
+})*/
 
 test('result of linear regression', () => {
   expect(L.a[0][0]).toBeCloseTo(45.541)
@@ -43,7 +51,17 @@ describe('anova', () => {
 
   expect(correlation).toBeCloseTo(.923, 3)
 
-  expect(a.fStat).toBeCloseTo(45.843, 3)
+  /*test('f-test', () => {
+    expect(a.fTest().stat).toBeCloseTo(45.843, 3)
+    expect(a.fTest().pValue).toBeCloseTo(0)
+  })*/
 
-  expect(a.fTestPVal()).toBeCloseTo(0)
+  test('sigma', () => {
+    const sigma = a.sigma(L.z)
+    expect(sigma[0][0]).toBeCloseTo(.648, 3)
+    expect(sigma[1][1]).toBeCloseTo(.104, 2)
+
+    expect(L.a[0][0]/sigma[0][0]).toBeCloseTo(70.287, 3)
+    expect(L.a[1][0]/sigma[1][1]).toBeCloseTo(6.771, 3)
+  })  
 })
