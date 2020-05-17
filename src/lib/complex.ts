@@ -32,7 +32,11 @@ export class Complex {
     return new Complex(x1 - x2, y1 + y2);
   }
 
-  sum(c:Complex):Complex {
+  sum(c:Complex | number):Complex {
+    if (typeof c === 'number') {
+      return new Complex(this.x + c, this.y);
+    }
+
     return new Complex(c.x + this.x, c.y + this.y)
   }
 
@@ -43,6 +47,27 @@ export class Complex {
   argument():number {
     return Math.atan2(this.y,this.x);//Math.atan(this.y/this.x); //
   }
+
+  conjugate():Complex {
+    return new Complex(this.x, -this.y)
+  }
+
+  /**
+   * raise to power `n`
+   * @param n power to be raised to
+   * https://math.stackexchange.com/questions/1397437/formula-for-raising-a-complex-number-to-a-power
+   */
+  pow(n: number) {
+    const r = this.modulus();
+    const arg = this.argument();
+
+    const rn = r**n;
+
+    const x = rn*Math.cos(n*arg);
+    const y = rn*Math.sin(n*arg);
+
+    return new Complex(x, y);
+  }
 }
 
 export const exp = (theta:number):Complex => {
@@ -51,3 +76,5 @@ export const exp = (theta:number):Complex => {
 
   return new Complex(x, y);
 }
+
+export default Complex;

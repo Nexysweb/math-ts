@@ -67,6 +67,13 @@ test('sum', () => {
   expect(c1.sum(c2)).toEqual(c3)
 });
 
+test('sum scalar', () => {
+  const c1 = new C.Complex(1, 2)
+  const c3 = new C.Complex(24, 2)
+
+  expect(c1.sum(23)).toEqual(c3)
+});
+
 // https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:complex/x2ec2f6f830c9fb89:complex-mul/a/multiplying-complex-numbers
 // multiplying two complex numbers
 test('multiple', () => {
@@ -90,3 +97,17 @@ test('modulus and argument', () => {
   expect(c2.x).toBeCloseTo(3)
   expect(c2.y).toBeCloseTo(4)
 });
+
+test('conjugate', () => {
+  const c = new C.Complex(1, 2);
+  expect(c.conjugate().x).toEqual(1)
+  expect(c.conjugate().y).toEqual(-2)
+})
+
+// https://www.wolframalpha.com/input/?i=%281%2B2i%29%5E2
+test('power', () => {
+  const c = new C.Complex(1, 2);
+  const c2 = c.pow(2)
+  expect(c2.x).toEqual(-3)
+  expect(c2.y).toBeCloseTo(4, 5)
+})
