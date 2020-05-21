@@ -1,0 +1,1 @@
+export const ghUrl = 'https://github.com/Nexysweb/math-ts';
