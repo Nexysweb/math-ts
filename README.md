@@ -7,15 +7,15 @@ Attempt at a simple math (linear algebra, statistics) library in typescript with
 
 ## Install
 
- with Yarn `yarn add @nexys/math-ts` or NPM `npm i @nexys/math-ts`. 
+with Yarn `yarn add @nexys/math-ts` or NPM `npm i @nexys/math-ts`. 
  
- This module has 0 dependencies and works both on the browser and with Node
+This module has 0 dependencies and works both on the browser and with Node
  
- ## Documentation and Examples
+## Documentation and Examples
  
 https://nexysweb.github.io/math-ts/ (WIP)
  
- ## Usage
+## Usage
  
 ```
 const * as Math from '@nexys/math-ts';
