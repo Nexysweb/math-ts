@@ -9,7 +9,7 @@ export const bissection = (f: (x: number) => number, x: number, y: number, preci
   const z:number = (x+y)/2
   const fz:number = f(z)
 
-  if((fz*(1-precision) <= 0 && fz*(1+precision) >= 0) || niterations==0){
+  if((fz*(1-precision) <= 0 && fz*(1+precision) >= 0) || niterations === 0){
     return z
   }
 
@@ -23,7 +23,7 @@ export const bissection = (f: (x: number) => number, x: number, y: number, preci
 export const newton = (x: number, f: (x:number) => number, df: (x:number) => number, precision: number = .0000000001, niterations: number = 1000):number => {
   const fx:number = f(x)
   //println(niterations+" "+fx)
-  if(Math.abs(fx) <= precision || niterations==0){
+  if(Math.abs(fx) <= precision || niterations === 0){
     return x
   }
   
@@ -40,7 +40,7 @@ export const newton = (x: number, f: (x:number) => number, df: (x:number) => num
  */
 export const secant = (x: [number, number], f: (x:number) => number, precision: number = .0001, niterations: number = 1000):number => {
   const y = x[0] - f(x[0])*(x[0] -  x[1])/(f( x[0]) - f(x[1]))
-  if(Math.abs(y-x[0]) <= precision || niterations==0){
+  if(Math.abs(y-x[0]) <= precision || niterations === 0){
     return y;
   }
   return secant([y, x[0]], f, precision, niterations-1)

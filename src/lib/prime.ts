@@ -1,6 +1,6 @@
 export const isPrime = (i: number, p: number[]):boolean=> {
   if(p.length>0){
-    if(i%p[0] === 0 && i!==p[0]){
+    if(i%p[0] === 0 && i !== p[0]){
       return false
     }
 
@@ -18,7 +18,7 @@ export const prime = (n: number):number[] => {
   const p:number[] = [3,5];
   let i = 7
   while (i<n){
-    if(i%10!=5 && isPrime(i, p)){
+    if(i%10 !== 5 && isPrime(i, p)){
       p.push(i);
     }
 

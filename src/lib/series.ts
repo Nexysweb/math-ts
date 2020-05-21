@@ -7,7 +7,7 @@
 export const geometric = (x: number, n: number, f: number = 0):number => {
   const r = (1 - (x**(n+1)))/(1-x);
 
-  if(f!=0){
+  if(f !== 0){
     return r - geometric(x, f-1)
   }
   
@@ -21,7 +21,7 @@ export const geometric = (x: number, n: number, f: number = 0):number => {
 export const geometricDerivative = (x: number, n: number, f: number = 0):number => {
   const r = (1 - (1 + n)*(x**n) + n*(x**(1 + n)))/((1 - x)**2)
 
-  if(f!=0){
+  if(f !== 0){
     return r - geometricDerivative(x, f-1)
   }
   
