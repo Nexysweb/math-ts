@@ -4,6 +4,7 @@ import * as Coordinate from './coordinate';
 import * as Degree from './degree';
 import * as Derivative from './derivative';
 import * as Fft from './fft';
+import * as Finance from './finance';
 import * as Function from './function';
 import * as Integral from './integral';
 import * as Linest from './linest';
@@ -17,4 +18,4 @@ import * as Vector from './vector';
 import * as Zeros from './zeros';
 import * as Stats from './stat';
 
-export { Binomial, Complex, Coordinate, Degree, Derivative, Fft, Function, Integral, Linest, Matrix, Polynom, Prime, Series, Stats, Type, Utils, Vector, Zeros };
+export { Binomial, Complex, Coordinate, Degree, Derivative, Fft, Finance, Function, Integral, Linest, Matrix, Polynom, Prime, Series, Stats, Type, Utils, Vector, Zeros };
