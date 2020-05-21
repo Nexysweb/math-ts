@@ -11,9 +11,9 @@ Attempt at a simple math (linear algebra, statistics) library in typescript with
  
  This module has 0 dependencies and works both on the browser and with Node
  
- ## Modules
+ ## Documentation and Examples
  
- you can see the list of modules in https://github.com/Nexysweb/math-ts/blob/master/src/lib/index.ts
+https://nexysweb.github.io/math-ts/ (WIP)
  
  ## Usage
  
