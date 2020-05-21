@@ -1,7 +1,7 @@
 import * as Z from './zeros';
 import * as Function from './function';
+import * as Series from './series';
 
-const epsilon = .00000001
 const q:(x:number) => number = x => Function.quadratic(x, 1, 0, 0)
 const l:(x:number) => number = x => Function.linear(x, 2,0);
 
@@ -22,9 +22,8 @@ describe('find zero', () => {
   })
 
   test('secant 2', () => {
-    // todo once series exist
-    //const f:(x:number) => number = 1.111 - Series.geometric(_, 3)
-    //const b = Z.secant([0.01, .1],  f);
-    //expect(b).toBeCloseTo(.1); // should (be >=.1-epsilon and be<=.1+epsilon)
+    const f = (x:number):number => 1.111 - Series.geometric(x, 3)
+    const b = Z.secant([0.01, .1],  f);
+    expect(b).toBeCloseTo(.1);
   })
 })
