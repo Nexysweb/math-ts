@@ -1,6 +1,6 @@
 {
   "name": "@nexys/math-ts",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -10,7 +10,17 @@
     "url": "https://github.com/Nexysweb/math-ts/issues"
   },
   "keywords": [
-    "typescript", "math", "typescript-library", "linear-algebra", "linear-regression", "statistics", "nodejs", "anova", "dna", "complex-numbers", "nodependence"
+    "typescript",
+    "math",
+    "typescript-library",
+    "linear-algebra",
+    "linear-regression",
+    "statistics",
+    "nodejs",
+    "anova",
+    "dna",
+    "complex-numbers",
+    "nodependence"
   ],
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
