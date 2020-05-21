@@ -13,7 +13,7 @@ Attempt at a simple math (linear algebra, statistics) library in typescript with
  
  ## Documentation and Examples
  
- [WIP]: https://nexysweb.github.io/math-ts/
+https://nexysweb.github.io/math-ts/ (WIP)
  
  ## Usage
  
