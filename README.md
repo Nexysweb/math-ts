@@ -1,7 +1,7 @@
 # TS Math
 
 [![npm version](https://badge.fury.io/js/%40nexys%2Fmath-ts.svg)](https://www.npmjs.com/package/@nexys/math-ts)
-[![TavisCI](https://travis-ci.com/Nexysweb/tableau-wdc-react.svg?branch=master)](https://travis-ci.com/github/Nexysweb/math-ts)
+[![Test](https://github.com/Nexysweb/math-ts/actions/workflows/test.yml/badge.svg)](https://github.com/Nexysweb/math-ts/actions/workflows/test.yml)
 [![Deployment](https://github.com/Nexysweb/math-ts/actions/workflows/deploy.yml/badge.svg)](https://github.com/Nexysweb/math-ts/actions/workflows/deploy.yml)
 [![Publish](https://github.com/Nexysweb/math-ts/actions/workflows/publish.yml/badge.svg)](https://github.com/Nexysweb/math-ts/actions/workflows/publish.yml)
 
