@@ -3,6 +3,7 @@
 [![npm version](https://badge.fury.io/js/%40nexys%2Fmath-ts.svg)](https://www.npmjs.com/package/@nexys/math-ts)
 [![TavisCI](https://travis-ci.com/Nexysweb/tableau-wdc-react.svg?branch=master)](https://travis-ci.com/github/Nexysweb/math-ts)
 [![Deployment](https://github.com/Nexysweb/math-ts/actions/workflows/deploy.yml/badge.svg)](https://github.com/Nexysweb/math-ts/actions/workflows/deploy.yml)
+[![Publish](https://github.com/Nexysweb/math-ts/actions/workflows/publish.yml/badge.svg)](https://github.com/Nexysweb/math-ts/actions/workflows/publish.yml)
 
 Attempt at a simple math (linear algebra, statistics) library in typescript (no dependencies).
 
