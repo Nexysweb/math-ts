@@ -4,8 +4,7 @@ name: Test
 on: [push]
 
 jobs:
-  buildNPublish:
-    if: contains(github.ref, 'refs/tags/v')
+  buildNTest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
